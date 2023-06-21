@@ -199,6 +199,16 @@ pub fn context_codegen(data: ContextData) -> Result<TokenStream, EmbeddedAssetsE
     &config.build.dist_dir
   };
 
+  let app_url = if let Ok(dir) = std::env::var("DIST") {
+    if Path::new(&dir).exists() {
+      AppUrl::Url(WindowUrl::App(dir.into()))
+    } else {
+      app_url.clone()
+    }
+  } else {
+    app_url.clone()
+  };
+
   let assets = match app_url {
     AppUrl::Url(url) => match url {
       WindowUrl::External(_) => Default::default(),
