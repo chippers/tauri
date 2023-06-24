@@ -351,7 +351,7 @@ fn build_command(
   build_cmd.arg("build");
   build_cmd.args(args);
 
-  Ok(build_cmd)
+  Ok(dbg!(build_cmd))
 }
 
 fn fetch_available_targets() -> Option<Vec<Target>> {
