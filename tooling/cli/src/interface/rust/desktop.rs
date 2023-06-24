@@ -305,6 +305,7 @@ fn build_command(
   }
 
   let mut build_cmd = Command::new(runner);
+  build_cmd.arg("xwin");
   build_cmd.arg("build");
   build_cmd.args(args);
 
